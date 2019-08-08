@@ -50,6 +50,7 @@ namespace LongNumbers
 		LongNum operator%(LongNum&);
 
 		LongNum pow(LongNum&);
+		LongNum fpow(int);
 
 	};
 }

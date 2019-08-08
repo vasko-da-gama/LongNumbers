@@ -607,4 +607,27 @@ namespace LongNumbers
 		return result;
 	}
 
+	inline LongNum sqr(LongNum a)
+	{
+		return (a * a);
+	}
+
+	LongNum LongNum::fpow(int power)
+	{
+		int len = 0, cp = power;
+		LongNum last(1);
+
+		while (cp > 0) { cp >>= 1; len++; }
+
+		for (int i = 0; i < (len - 1); i++)
+		{
+			if (((power >> (len - i - 1)) & 0x01) != 0)
+				last = last * (*this);
+			last = sqr(last);
+		}
+		if ((power & 0x01) != 0)
+			last = last * (*this);
+		return last;
+	}
+
 }
